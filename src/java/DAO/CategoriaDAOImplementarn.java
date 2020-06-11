@@ -33,7 +33,22 @@ public class CategoriaDAOImplementarn implements CategoriaDAO {
     public List<Categoria> Listar() {
         StringBuilder miSQL = new StringBuilder();
         miSQL.append("SELECT * FROM tb_categoria;");
-        
+        List<Categoria> lista = new ArrayList<Categoria>();
+        try{
+            //Se crea el objeto ResultSet omplemantando el metodo ConsultaSQL 
+            ResultSet resultadoSQL = this.conn.consultaSQL(miSQL.toString());
+            while(resultadoSQL.next()){
+            Categoria categoria = new Categoria();//Declara el objeto categoria
+            //Asigna a cada campo consultado al atributo de la clase
+            categoria.setId_categoria(resultadoSQL.getInt("id_categoria"));
+            categoria.setNom_categoria(resultadoSQL.getString("nom_categoria"));
+            categoria.setEstado_categoria(resultadoSQL.getInt("estado_categoria"));
+            lista.add(categoria);//Agrega al arreglo cada registro encontrado
+            }
+        }catch(Exception ex){
+        this.conn.cerrarConexion();//pa cerrar conexion señores
+        }
+        return lista;
     }
 
     @Override
