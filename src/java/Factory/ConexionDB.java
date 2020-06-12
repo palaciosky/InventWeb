@@ -31,6 +31,19 @@ public abstract class ConexionDB {
     }
    return rs;
   }
+    
+ public boolean ejecutarSQL(String consulta){
+  Statement st;
+  boolean guardar = true;
+   try{
+    st = conexion.createStatement();
+    st.executeUpdate(consulta);
+   }catch(SQLException ex){
+    guardar = false;
+    ex.printStackTrace();
+   }
+  return guardar;
+ }   
  
   public boolean cerrarConexion(){
   boolean ok = true;
@@ -42,4 +55,6 @@ public abstract class ConexionDB {
   }
   return ok;
   }
+
+    
 }

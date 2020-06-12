@@ -20,6 +20,7 @@ public class Prueba {
         Prueba evaluar = new Prueba();
         evaluar.listarCategorias();
         evaluar.editarCategoria();
+        evaluar.guardaCategoria();
     }
 
     private void listarCategorias() {
@@ -40,6 +41,14 @@ public class Prueba {
         System.out.println("ID: "+ cat_edit.getNom_categoria() +
                 "Nombre: "+ cat_edit.getEstado_categoria());
     
+    }
+
+    private void guardaCategoria() {
+       CategoriaDAO categoria = new CategoriaDAOImplementarn(); //To change body of generated methods, choose Tools | Templates. 
+       Categoria guarda_cat = new Categoria();
+       guarda_cat.setNom_categoria("Bebidas");
+       guarda_cat.setEstado_categoria(1);
+       categoria.guardarCat(guarda_cat);
     }
     
 }
