@@ -11,7 +11,7 @@ package Factory;
  */
 public class FactoryConexionDB {
     public static final int MySQL = 1; //Para conectar Mynosque señores
-    public static String[] configMySQL ={"bd_inventario","root",""};
+    public static String[] configMySQL ={"bd_recurso_humano","root",""};
     
     public static ConexionDB open (int tipoDB){
     switch(tipoDB){
