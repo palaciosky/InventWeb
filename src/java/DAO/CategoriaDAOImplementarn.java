@@ -23,7 +23,7 @@ public class CategoriaDAOImplementarn implements CategoriaDAO {
     
     public CategoriaDAOImplementarn() {
         //Definir a la db que se conectara por default
-        this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
+        
         
     }
 
@@ -31,6 +31,7 @@ public class CategoriaDAOImplementarn implements CategoriaDAO {
     
     @Override
     public List<Categoria> Listar() {
+        this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
         StringBuilder miSQL = new StringBuilder();
         miSQL.append("SELECT * FROM tb_categoria;");
         List<Categoria> lista = new ArrayList<Categoria>();
@@ -58,11 +59,30 @@ public class CategoriaDAOImplementarn implements CategoriaDAO {
 
     @Override
     public Categoria editarCat(int id_cat_edit) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
+        Categoria categoria = new Categoria();//Objeto categoria para devolver datos
+        StringBuilder miSQL = new StringBuilder();//Construye la consulta
+        //Agregar la consulta SQL
+        miSQL.append("SELECT * FROM tb_categoria WHERE id_categoria =").append(id_cat_edit);
+        try{// Realiza la consulta
+            ResultSet resultadoSQL = this.conn.consultaSQL(miSQL.toString());
+            while(resultadoSQL.next()){
+            categoria.setId_categoria(resultadoSQL.getInt("id_categoria"));
+            categoria.setNom_categoria(resultadoSQL.getString("nom_categoria"));
+            categoria.setEstado_categoria(resultadoSQL.getInt("estado_categoria"));
+            }       
+        }catch(Exception ex){
+              
+        }finally{
+        this.conn.cerrarConexion();//esto la cierra
+        }
+        return categoria;
+        
     }
 
     @Override
     public boolean guardarCat(Categoria categoria) {
+        this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
