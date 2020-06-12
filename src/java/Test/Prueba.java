@@ -19,6 +19,7 @@ public class Prueba {
     public static void main(String[] args) {
         Prueba evaluar = new Prueba();
         evaluar.listarCategorias();
+        evaluar.editarCategoria();
     }
 
     private void listarCategorias() {
@@ -30,6 +31,15 @@ public class Prueba {
             + " NOMBRE: "+ categoriaListar.getNom_categoria()
             + " ESTADO: "+categoriaListar.getEstado_categoria());
         }
+    }
+
+    private void editarCategoria() {
+        CategoriaDAO categoria = new CategoriaDAOImplementarn(); //To change body of generated methods, choose Tools | Templates.
+        Categoria cat_edit = categoria.editarCat(1);
+        System.out.println("CATEGORIA A MODIFICAR");
+        System.out.println("ID: "+ cat_edit.getNom_categoria() +
+                "Nombre: "+ cat_edit.getEstado_categoria());
+    
     }
     
 }
