@@ -19,8 +19,9 @@ public class Prueba {
     public static void main(String[] args) {
         Prueba evaluar = new Prueba();
         evaluar.listarCategorias();
-        evaluar.editarCategoria();
-        evaluar.guardaCategoria();
+       // evaluar.editarCategoria();
+       // evaluar.guardaCategoria();
+        //evaluar.eliminarCategoria();
     }
 
     private void listarCategorias() {
@@ -49,6 +50,11 @@ public class Prueba {
        guarda_cat.setNom_categoria("Bebidas");
        guarda_cat.setEstado_categoria(1);
        categoria.guardarCat(guarda_cat);
+    }
+
+    private void eliminarCategoria() {
+       CategoriaDAO categoria = new CategoriaDAOImplementarn(); //To change body of generated methods, choose Tools | Templates. 
+      categoria.borrarCat(2);
     }
     
 }
