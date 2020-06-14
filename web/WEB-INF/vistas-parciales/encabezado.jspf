@@ -1,0 +1,8 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+
+<div>
+    <div class="bg-secondary">
+          <h2>Sistema de Control de Inventario</h2>
+    </div>
+    <div class="container bg-info" >

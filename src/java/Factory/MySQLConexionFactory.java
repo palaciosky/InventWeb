@@ -31,6 +31,7 @@ public final class MySQLConexionFactory extends ConexionDB{
         this.conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/"+this.parametros[0],this.parametros[1],this.parametros[2]);
     }catch(Exception ex){
     ex.printStackTrace();
+ 
     }
     return this.conexion;
     }
