@@ -9,9 +9,25 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <servlet-class>Controller.Index</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Categorias</servlet-name>
+        <servlet-class>Controller.Categorias</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/Index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Categorias</servlet-name>
+        <url-pattern>/Categorias</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

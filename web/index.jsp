@@ -14,7 +14,11 @@
     </head>
     <body>
         <%@include file="WEB-INF/vistas-parciales/encabezado.jspf" %>
-        <h1>eeeeeeee!</h1>
+        <h1>Bienvenido a este Registro!</h1>
+        <br>
+        <br>
+        <br>
+        
         <%@include file="WEB-INF/vistas-parciales/pie.jspf" %>
     </body>
 </html>
