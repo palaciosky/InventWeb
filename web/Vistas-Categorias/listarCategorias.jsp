@@ -20,14 +20,28 @@
     <body>
         <%@include file="../WEB-INF/vistas-parciales/encabezado.jspf" %>
         <div style="width: 600px;" >
-            <a href="#" class="btn btn-success btn-sm glyphicon glyphicon-pencil" role="button"  >Nueva Categoria</a>
+            <a href="#" class="btn btn-success btn-sm glyphicon glyphicon-pencil" role="button"  >Agregar Categoria +</a>
+            <a onclick="javascript:window.imprimirDIV('ID_DIV');" href="#"  class="btn btn-success btn-sm " role="button" ><span class="glyphicon glyphicon-print"> PDF</span> </a>
             <h3>Listado de categorias Registradas</h3>
-            <table class="table table-striped" >
+             <script>
+                function imprimirDIV(ID_DIV) {
+                var ficha = document.getElementById(ID_DIV);
+                 var ventanaImpresion = window.open(' ', 'popUp');
+                ventanaImpresion.document.write(ficha.innerHTML);
+                ventanaImpresion.document.close();
+                ventanaImpresion.print();
+                ventanaImpresion.close();
+                 }
+      </script>
+        <div id="ID_DIV" >
+            <table class="table table-striped"  >
+                      
+                
                     <tr>
-                        <th>ID</th>
-                        <th>NOMBRE</th>
-                        <th>ESTADO</th>
-                        <th>ACCION</th>
+                        <th> CODIGO </th>
+                        <th> NOMBRE </th>
+                        <th> STATUS </th>
+                        <th></th>
                     </tr>
                     <% 
                         for (int i =0 ; i < lista.size(); i++){
@@ -42,8 +56,8 @@
                        <td> <%= categoria.getNom_categoria() %> </td>
                        <td> <%= categoria.getEstado_categoria() %> </td>
                        <td>
-                           <a href="#" class="btn btn-info btn-sm glyphicon glyphicon-edit " role="button" >Edit </a> 
-                           <a href="#" class="btn btn-info btn-sm glyphicon glyphicon-remove " role="button"  >Delt </a> 
+                           <a href="#" class="btn btn-info btn-sm glyphicon glyphicon-pencil" role="button" ></a> 
+                           <a href="#" class="btn btn-danger btn-sm glyphicon glyphicon-remove" role="button" ></a> 
                        </td>
                     </tr>
                     <%
@@ -51,6 +65,8 @@
                     %>
 
                 </table>
+        </div>
+
         </div>
       <%@include file="../WEB-INF/vistas-parciales/pie.jspf" %>               
     </body>
