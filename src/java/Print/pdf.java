@@ -1,6 +1,9 @@
 
 package Print;
 
+import DAO.CategoriaDAO;
+import DAO.CategoriaDAOImplementarn;
+import Model.Categoria;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -33,6 +36,7 @@ public class pdf extends HttpServlet {
         response.setContentType("application/pdf");
         OutputStream out = response.getOutputStream();
         try  {
+            CategoriaDAOImplementarn cat = new CategoriaDAOImplementarn();
             try{
                 Document documento = new Document();
                 PdfWriter.getInstance(documento, out);
@@ -55,7 +59,33 @@ public class pdf extends HttpServlet {
                 par2.add(new Phrase(Chunk.NEWLINE));
                 documento.add(par2);
                 
-                documento.close();
+                PdfPTable tabla = new PdfPTable(3);
+                PdfPCell celda1 = new PdfPCell(new Paragraph("ID",FontFactory.getFont("Arial",12,Font.BOLD,BaseColor.BLUE)));
+                PdfPCell celda2 = new PdfPCell(new Paragraph("NOMBRE",FontFactory.getFont("Arial",12,Font.BOLD,BaseColor.BLUE)));
+                PdfPCell celda3 = new PdfPCell(new Paragraph("STATUS",FontFactory.getFont("Arial",12,Font.BOLD,BaseColor.BLUE)));
+                
+                tabla.addCell(celda1);
+                tabla.addCell(celda2);
+                tabla.addCell(celda3);
+                
+                CategoriaDAO categoria = new CategoriaDAOImplementarn(); //To change body of generated methods, choose Tools | Templates.
+       java.util.List<Categoria> listar = categoria.Listar();
+        
+       
+        for ( Categoria categoriaListar : listar) {
+            String v1 = String.valueOf(categoriaListar.getId_categoria());//los convierto a String para que el agregar celda no de error por tipo de datos
+            String v2 = String.valueOf(categoriaListar.getEstado_categoria());//los convierto a String para que el agregar celda no de error por tipo de datos
+            tabla.addCell(v1);//imprimo la variable convertida a string
+            tabla.addCell(categoriaListar.getNom_categoria());//ese ya estaba asi, asi que jala
+            tabla.addCell(v2);//lo mismo que el primer valor
+            
+        }
+                
+                 documento.add(tabla);//agrega todas las celdas a la tabla
+                documento.close();//su accion termina cierra el documento
+                
+                
+                
             }catch(DocumentException ex){
             ex.getMessage();
             }
