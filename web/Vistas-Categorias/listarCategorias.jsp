@@ -22,6 +22,7 @@
         <div style="width: 600px;" >
             <a href="#" class="btn btn-success btn-sm glyphicon glyphicon-pencil" role="button"  >Agregar Categoria +</a>
             <a onclick="javascript:window.imprimirDIV('ID_DIV');" href="#"  class="btn btn-success btn-sm " role="button" ><span class="glyphicon glyphicon-print"> PDF</span> </a>
+             <a href="pdf" class="btn btn-success btn-sm glyphicon glyphicon-pencil" role="button"  >Agregar Categoria +</a>
             <h3>Listado de categorias Registradas</h3>
              <script>
                 function imprimirDIV(ID_DIV) {
